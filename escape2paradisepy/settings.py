@@ -129,3 +129,5 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 MEDIA_URL = "/media/"
+
+STATIC__ROOT = "/home/dev/Envs/escape/static"
