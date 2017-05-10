@@ -2,7 +2,7 @@ from django.db import models
 import os
 
 def get_image_path(instance, filename):
-    return os.path.join( filename)
+    return os.path.join( "/media/", filename)
 
 class Property(models.Model):
     created = models.DateTimeField(auto_now_add=True)
@@ -30,13 +30,13 @@ class Property(models.Model):
 
 class PropertyImage(models.Model):
     prop = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
+    image = models.ImageField( blank=True, null=True)
     text = models.CharField(max_length=100, blank=True, default='')
     position = models.IntegerField()
 
 class Review(models.Model):
     prop = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='reviews')
-    image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
+    image = models.ImageField( blank=True, null=True)
     name = models.CharField(max_length=100, blank=True, default='')
     text = models.TextField()
 
